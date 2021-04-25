@@ -1,0 +1,73 @@
+.Home-body{
+    z-index: -15;
+    background-color: #3755be;
+    height: 100vh;
+}
+.secondary-title{
+    text-align: center;
+}
+.secondary-title>h6{
+    color: white;
+    font-weight: 80 !important;
+    font-size: 1em;
+}
+#connect-btn{
+    color: white;
+    border: 1px solid #536cc7;
+    background: #3755be;
+    margin-top: 20px;
+    width: 150px;
+}
+#connect-btn:hover{
+    
+    border: 1px solid #344ca0;
+    background-color: #344ca0;
+    border: none;
+}
+#connect-btn:focus{
+    border: 1px solid #344ca0;
+    background-color: #344ca0;
+}
+.home-deco1{
+    position: absolute;
+    left: -150px;
+    top: -190px;
+}
+.home-deco1>svg{
+    fill: #152047;
+}
+.home-deco2{
+    position: absolute;
+    right: 10px;
+    bottom: 13vh;
+}
+.home-deco2>svg{
+   fill:#ff8e88;
+}
+.home-svgs-1{
+    position: absolute;
+    width: 100vw;
+    top:85vh;
+}
+.home-svgs-1>svg{
+    fill: white;
+}
+
+.Home-body>h1{
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    text-shadow: 7px 1px 5px rgba(0, 0, 0, 0.1),10px 10px 5px rgba(0, 0, 0, 0.05); 
+    padding-top: 40vh;
+    font-size: 4em;
+}
+#styleback{
+    z-index: -100;
+    position: absolute;
+    left: 40vw;
+    top: 50vh;
+    width: 20vw;
+    height: 300px;
+    border-radius: 10px;
+    background-color: rgb(40, 180, 180);
+}
