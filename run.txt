@@ -1,0 +1,2 @@
+[1] Go to front-end: cd front-end
+[2] Simply run: npm start ( you need to npm install before on each forlders (back/front)-end )
