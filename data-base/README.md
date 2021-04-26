@@ -21,7 +21,7 @@ open your favorite terminal emulator and execute
 
 
 ## Import
-open data-base/dumb you will find a folder named audiotext here the standart args avaible for mongorestore
+open data-base/dumb you will find a folder named audiotext here the standart args available for mongorestore
 
     $ mongorestore <options> <connection-string> <directory to restore>
     
