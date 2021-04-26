@@ -1,5 +1,4 @@
 import React from 'react';
-import VerifyToken from './mini/VerifyToken';
 import {Link} from 'react-router-dom';
 import '../static/home.css';
 
@@ -9,7 +8,6 @@ class Home extends React.Component{
     render(){
         return(
             <div>
-            <VerifyToken />
                <div className="home-svgs-1">
                         <svg
                                 width="100vw" height="15vh" 
