@@ -1,2 +1,0 @@
-mongorestore --db audiotext ./audiotext
-(if using windows you need to install MongoDB_DatabaseTools avaible in the official website)
