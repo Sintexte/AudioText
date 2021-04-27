@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './mini/header'
 import Logoff from './mini/Logoff'
+import Audiotext from './Audiotext'
 
 import '../static/main.css'
 class Main extends React.Component{
@@ -27,6 +28,7 @@ class Main extends React.Component{
         return (
             <div className='Mainbody'>
                 <Header logoff={this.logoff} />
+                <Audiotext />
             </div>
         )
     }
