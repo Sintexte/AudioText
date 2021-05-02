@@ -2,9 +2,11 @@
 const express = require('express')
 const fs = require("fs")
 const { MongoClient,ObjectID } = require("mongodb");
+const fileUpload = require('express-fileupload');
 const app = express()
 const port = 3001
 app.use(express.json())   //parse request body as JSON
+app.use(fileUpload());
 app.use(express.urlencoded({extended: true}))
 
 //[HEAD1] watson speech to text api-----------------------------
@@ -89,7 +91,26 @@ app.post('/api/login', (req,res) =>{
       }
 })
 
+app.post('/api/upload', (req,res)=>{
+  let sampleFile;
+  let uploadPath;
 
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No files were uploaded. :p');
+  }
+
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  sampleFile = req.files.sampleFile;
+  uploadPath = __dirname + '/audio/' + sampleFile.name;
+
+  // Use the mv() method to place the file somewhere on the server
+  sampleFile.mv(uploadPath, function(err) {
+    if (err)
+      return res.status(500).send(err);
+
+    res.send('File uploaded!');
+  });
+})
 
 //[TRASH]
 /*

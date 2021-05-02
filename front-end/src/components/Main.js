@@ -6,6 +6,8 @@ import Audiotext from './Audiotext'
 import '../static/main.css'
 class Main extends React.Component{
     //MAIN APP
+
+    //need a veriftoken to redirect to / if token invalide 
     constructor(props){
         super(props)
         this.state={
