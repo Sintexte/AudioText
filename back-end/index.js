@@ -105,26 +105,27 @@ app.post('/api/upload', (req,res)=>{
 
   // Use the mv() method to place the file somewhere on the server
   sampleFile.mv(uploadPath, function(err) {
-    if (err)
-      return res.status(500).send(err);
+    if (err) return res.status(500).send(err);
 
-    res.send('File uploaded!');
+    const params = {
+      objectMode: true,
+      contentType: 'audio/flac',
+      model: 'en-US_BroadbandModel',
+      keywords: [],
+      maxAlternatives: 3,
+    };
+    const recognizeStream = speechToText.recognizeUsingWebSocket(params);
+    fs.createReadStream('./audio/'+sampleFile.name).pipe(recognizeStream);
+    recognizeStream.on('data', function(event)  { 
+      console.log(JSON.stringify(event, null, 2));
+      res.send(JSON.stringify(event, null, 2)); });
   });
 })
 
 //[TRASH]
 /*
 app.get('/', (req, res) => {
-    const params = {
-        objectMode: true,
-        contentType: 'audio/flac',
-        model: 'en-US_BroadbandModel',
-        keywords: [],
-        maxAlternatives: 3,
-      };
-    const recognizeStream = speechToText.recognizeUsingWebSocket(params);
-    fs.createReadStream('./audio/Recording.flac').pipe(recognizeStream);
-    recognizeStream.on('data', function(event)  { res.send(JSON.stringify(event, null, 2)); });
+    
   })
 
 
