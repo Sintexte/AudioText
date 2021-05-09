@@ -13,7 +13,7 @@ class AudiotextSaudio extends React.Component{
     }
 
     set_audiotxt = (json_res) =>{
-        this.setState({audio_txt:json_res})
+        this.setState({audio_txt:json_res.results})
         console.log(this.state.audio_txt)
     }
 
@@ -21,11 +21,11 @@ class AudiotextSaudio extends React.Component{
            if(this.state.audio_txt !== null){
                try{
                     //console.log(this.state.audio_txt.results);
-                    if(this.state.audio_txt.results[0]){
+                    if(this.state.audio_txt[0].alternatives[0]){
                         //good :)
                         return(
                             <>
-                                <Transcript msg={this.state.audio_txt.results[0].alternatives[0].transcript}/>
+                                <Transcript msg={this.state.audio_txt}/>
                             </>
                         );
                     }else{
