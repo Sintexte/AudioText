@@ -6,7 +6,8 @@ class UploadFile extends React.Component{
         actual_msg:'Choose File',
         file: null,
         bad:false,
-        upload:false
+        upload:false,
+        serverror:false
     }
     
     render(){
@@ -51,12 +52,12 @@ class UploadFile extends React.Component{
                                     let js_data = JSON.parse(data)
                                     this.props.set_audiotxt(js_data)
                                 });
-                            }}  disabled={this.state.bad || (this.state.actual_msg === this.state.default_msg)?'disabled':''} className="input-group-text" id="inputGroupFileAddon01"  value='upload'/>
+                            }} disabled={this.state.bad || (this.state.actual_msg === this.state.default_msg)?'disabled':''} className="input-group-text" id="inputGroupFileAddon01"  value='upload'/>
                         </div>
                     </div>
                     <br />
                     <p>
-                    {(this.state.upload)?"uploading ...":""}
+                        {(this.state.upload)?"uploading ...":""}
                     </p>
                 </div>
                
