@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Loginform from './mini/login-form'
+import SignupForm from './mini/signup-form'
 import VerifyToken from './mini/VerifyToken';
 
 import '../static/login.css'
 import watsonimg from '../static/watsonblack.png'
 
-class Login extends React.Component{
+class Signup extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -22,7 +22,7 @@ class Login extends React.Component{
                     <div className="row row-cols-2">
                         <div className="col-4 first-body full">
                             <div className="logform">
-                                <Loginform />
+                                <SignupForm />
                             </div>
                         </div>
                         {/* Powered By */}
@@ -35,4 +35,4 @@ class Login extends React.Component{
         )
     }
 }
-export default Login;
+export default Signup;

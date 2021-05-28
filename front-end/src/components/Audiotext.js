@@ -13,9 +13,9 @@ class Audiotext extends React.Component{
     
     render(){
         return (
-            <div >
-                {this.state.upload?<AudiotextSaudio />:null}
-            </div>
+            <>
+                {this.state.upload?<AudiotextSaudio page={this.props.page_}/>:null}
+            </>
         )
     }
 }

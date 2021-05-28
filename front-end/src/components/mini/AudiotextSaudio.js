@@ -3,6 +3,8 @@
 import React from 'react'
 import UploadFile from './UploadFile'
 import Transcript from './Transcript'
+import Record from './Record'
+
 
 class AudiotextSaudio extends React.Component{
     constructor(props){
@@ -12,9 +14,13 @@ class AudiotextSaudio extends React.Component{
         }
     }
 
+
     set_audiotxt = (json_res) =>{
         this.setState({audio_txt:json_res.results})
-        console.log(this.state.audio_txt)
+    }
+
+    set_audionull = () => {
+        this.setState({audio_txt:null})
     }
 
    render(){
@@ -25,7 +31,7 @@ class AudiotextSaudio extends React.Component{
                         //good :)
                         return(
                             <>
-                                <Transcript msg={this.state.audio_txt}/>
+                                <Transcript msg={this.state.audio_txt} null={this.set_audionull} />
                             </>
                         );
                     }else{
@@ -36,11 +42,24 @@ class AudiotextSaudio extends React.Component{
                     return("Error - ")
                }
            }else{
-                return(
-                    <>
-                        <UploadFile set_audiotxt = {this.set_audiotxt}/>
-                    </>
-                );
+               if(this.props.page===0){
+                    return(
+                        <>
+                            {/*Component Upload file*/}
+                            <UploadFile set_audiotxt = {this.set_audiotxt}/>
+                        </>
+                    );
+                }else if(this.props.page===1){
+                    return(
+                        <>
+                            {/*Component Record file*/}
+                            <Record set_audiotxt = {this.set_audiotxt} />
+                        </>
+                    )
+                }
+                else{
+                    return (<></>)
+                }
            }
    }
 }

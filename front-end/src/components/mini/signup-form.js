@@ -5,22 +5,23 @@ import Cookies from 'universal-cookie'
 
 import {Language} from '../../language/Lang'
 
-class Loginform extends React.Component{
+class SignupForm extends React.Component{
     
     state = {
         username:"",
         password:"",
+        password_:"",
+        email:"",
         status:-1,    //-1normal;0good;1badpassowrdorusername;2servererror
         logboxmessage:"",
         logboxcolor:"",
         redirect:false,
-        lg:Language[localStorage.getItem("language")].LoginForm
+        lg:Language[localStorage.getItem("language")].SignupForm
     };
 
     //handling form
     handleSub = (event) =>{
         event.preventDefault();
-        
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -53,27 +54,26 @@ class Loginform extends React.Component{
                         </span>
                     </NavLink>
                     <h1 className="h1_logform">
-                        {this.state.lg.logtitle}
+                        {this.state.lg.signtitle}
                     </h1>
 
-                    <hr className="hr_log"/>
+                    <hr className="hr_log hr_sign"/>
                     <form onSubmit={this.handleSub}>
-                        <input name="username"  onChange={(event)=>{this.setState({username:event.target.value})}} className="input_login form-control" type="text"  placeholder={this.state.lg.userindefault} required />
-                        <input name="password" onChange={(event)=>{this.setState({password:event.target.value})}} className="input_login form-control" type="password"  placeholder={this.state.lg.passwordindefault} required/>
+                        <input name="username"  onChange={(event)=>{this.setState({username:event.target.value})}} className="input_login form-control input_signup" type="text"  placeholder={this.state.lg.userindefault} required />
+                        <input name="email"  onChange={(event)=>{this.setState({email:event.target.value})}} className="input_login form-control input_signup" type="email"  placeholder={this.state.lg.userindefault} required />
+                        <input name="password" onChange={(event)=>{this.setState({password:event.target.value})}} className="input_login form-control input_signup" type="password"  placeholder={this.state.lg.passwordindefault} required/>
+                        <input name="password" onChange={(event)=>{this.setState({password_:event.target.value})}} className="input_login form-control input_signup" type="password"  placeholder={this.state.lg.passwordin_default} required/>
                         <div id="log-box" style={{color: this.state.logboxcolor,textAlign:'center'}}>
                             {this.state.logboxmessage}
                         </div><br />
                         <div className="center">
-                            <input type="submit" className="btn cntform" value={this.state.lg.logbtn}/>
+
+                            <input type="submit" className="btn cntform" value={this.state.lg.signbtn}/>
                         </div>
                     </form>
-                    <NavLink to="/signup"  >
-                        <p></p><p></p>
-                        <span  class="inscription-link" >Don't have an Account ?</span>
-                    </NavLink>
             </>
         )
     }
     
 }
-export default Loginform;
+export default SignupForm;

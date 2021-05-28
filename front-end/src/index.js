@@ -8,6 +8,12 @@ import _404 from './components/404'
 import Home from './components/Home'
 import Login from './components/Login'
 import Main from './components/Main'
+import Signup from './components/Signup'
+
+if(!localStorage.getItem("language")){
+
+  localStorage.setItem("language","en")
+}
 
 ReactDOM.render(
     < BrowserRouter >
@@ -15,6 +21,7 @@ ReactDOM.render(
           <Route exact path="/" component={Home}/>
           <Route exact path="/home" component={Home}/>
           <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
           <Route exact path="/main" component={Main} />
           <Route component={_404} />
         </Switch>

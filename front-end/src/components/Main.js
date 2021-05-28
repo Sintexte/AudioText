@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './mini/header'
 import Logoff from './mini/Logoff'
 import Audiotext from './Audiotext'
+import VerifyToken from './mini/VerifyToken' 
 
 import '../static/main.css'
 class Main extends React.Component{
@@ -11,13 +12,19 @@ class Main extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            logginoff:false
+            logginoff:false,
+            page:0
         }
     }
 
     logoff = () =>{
         this.setState({logginoff:true})
-      }
+    }
+
+    set_page = (page_) => {
+        this.setState({page:page_})
+        console.log(this.state.page);
+    }
 
     render(){
         if(this.state.logginoff){
@@ -26,11 +33,11 @@ class Main extends React.Component{
                     <Logoff />
                 </div> 
             )
-        }
-        return (
-            <div className='Mainbody'>
-                <Header logoff={this.logoff} />
-                <Audiotext />
+        }return (
+            <div className='Mainbody min-vh-100'>
+                <VerifyToken invalidepage='/'/>
+                <Header logoff={this.logoff}  set_page={this.set_page} />
+                <Audiotext page_={this.state.page}/>
             </div>
         )
     }

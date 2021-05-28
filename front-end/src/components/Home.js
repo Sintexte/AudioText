@@ -1,13 +1,37 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import '../static/home.css';
+import {Language} from '../language/Lang'
 
+import '../static/home.css'
 class Home extends React.Component{
     //Using it as a "you dont have an account please connect" 
-    
+    state = {lg:[]}
+
+    constructor(){
+        super()
+        this.state.lg = Language[localStorage.getItem('language')].Home
+    }
+
     render(){
         return(
-            <div>
+            <>
+               <div style={{float:'right'}}>
+                    <label className="radiolanguage btn  active ">
+                        🇺🇲 
+                        <input style={{visibility:'hidden'}}  className='radiolanguage' type="radio" onClick={()=>{
+                            localStorage.setItem('language','en')
+                            this.setState({lg:Language[localStorage.getItem('language')].Home})
+                        }}  name="options" id="option1" autoComplete="off" /> 
+                    </label>
+                    <label className="btn radiolanguage">
+                        🇫🇷 
+                        <input style={{visibility:'hidden'}}  type="radio" onClick={()=>{
+                            localStorage.setItem('language','fr')
+                            this.setState({lg:Language[localStorage.getItem('language')].Home})
+                        }} name="options" id="option2" autoComplete="off" value="Radio"/>
+                    </label>
+               </div>
                <div className="home-svgs-1">
                         <svg
                                 width="100vw" height="15vh" 
@@ -21,10 +45,10 @@ class Home extends React.Component{
                 </div>
                 <div>
                     <div className="container-fluid Home-body">
-                            <h1 >Audio Converter</h1>
+                            <h1 >{this.state.lg.WebsiteName}</h1>
                             <div className="secondary-title">
-                                <h6>Use Your Voice</h6>
-                                <Link to="/login"  className="btn" id="connect-btn">Connnect</Link>
+                                <h6>{this.state.lg.SmallTitle}</h6>
+                                <Link to="/login"  className="btn" id="connect-btn">{this.state.lg.cnxbtn}</Link>
                             </div>
                             
                             <div className="home-deco2">
@@ -53,7 +77,7 @@ class Home extends React.Component{
                         </div>
                     </div>
                     </div>
-            </div>
+            </>
         )
     }
 }

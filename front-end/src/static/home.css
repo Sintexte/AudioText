@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
 .Home-body{
     z-index: -15;
     background-color: #3755be;
@@ -70,4 +72,14 @@
     height: 300px;
     border-radius: 10px;
     background-color: rgb(40, 180, 180);
+}
+.radiolanguage{
+    background-color: #334fb4;
+    border: none;
+    border-radius: unset;
+    margin: 0;
+    padding: 6px 0px 6px 15px;
+}
+.radiolanguage:active{
+    background-color: #243b8b;
 }

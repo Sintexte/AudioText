@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
 .bgcoolblue{
     background-color: #3755be;
 }   
@@ -11,7 +13,64 @@
     background-color: #b33232;
 }
 .Mainbody{
-    height: 100vh;
     width: 100vw;
-    background-color: rgb(221, 225, 231);
+    background-color: #2d49af;
+    color:white;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+.transc-code{
+    background-color: #2943a1;
+    color: rgb(27, 27, 27);
+}
+.upload-area{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgb(37, 60, 143);
+    border-radius: 10px 0px 0px 10px;
+    color: white;
+    height: 100%;
+}
+.choosebtn{
+    height: 100%;
+    float: right;
+    border-radius: 0;
+    border: unset;
+    background-color: #2f4baf;
+    color: white;
+}
+.gobackbtn{
+    border: unset;
+    color: white;
+    background-color: #2943a1;
+    padding: 7px 10px 7px 10px;
+    border-radius: 10px;
+}
+.transcriptbody{
+    width:70%;
+    padding-top:20%;
+    padding-left: 29%;
+    padding-top: 15%;
+}
+.uploadbody{
+    width:70%;
+    padding-top:20%;
+    padding-left: 29%;
+    padding-top: 15%;
+}
+
+.header_links{
+    margin: 0px 10px 0px 20px;
+    cursor: pointer;
+}
+.btn_record{
+
+    background-color:#2f4baf;
+    border:unset;
+    color:white;
+    border-radius: 0px 10px 10px 0px ;
 }
