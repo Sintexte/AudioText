@@ -2,6 +2,10 @@ import React from 'react'
 import {Language} from '../../language/Lang'
 
 class Transcript extends React.Component{
+    //this component is simply used to show the transcription of the audio file
+    //receive a json and put it in a code section
+    //it also adds color to the background of text depending on the confidence of the AI
+
     state={
         lg:Language[localStorage.getItem('language')].Main.transcript
     }
@@ -12,7 +16,7 @@ class Transcript extends React.Component{
                 <h1>{this.state.lg.title}</h1>
                 <div className="form-group green-border-focus">
                     <label htmlFor="exampleFormControlTextarea5">English</label>
-                    <code style={{height: '100px',overflow:'auto'}} className="form-control transc-code" >
+                    <code style={{height: '200px',overflow:'auto'}} className="form-control transc-code" >
                         {
                         this.props.msg.map(ob=>{
                             console.log(ob.alternatives[0].confidence);

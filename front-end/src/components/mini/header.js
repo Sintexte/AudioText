@@ -38,8 +38,8 @@ class Header extends React.Component{
                         }
                         </Nav>
                         <Form inline>
-                            <Button variant="outline-light" title={this.state.lg.btnuser} >
-                                <AiOutlineUser />
+                            <Button variant="outline-light" title={this.state.lg.btnuser} onClick={()=>{this.props.set_page(3)}}>
+                                    <AiOutlineUser />
                             </Button>
                             <span style={{color:'white',paddingLeft:'10px',paddingRight:'10px'}}>
                                 |

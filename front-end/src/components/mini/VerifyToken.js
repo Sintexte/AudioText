@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie'
 //COMMENTS [y]
 
 class VerifyToken extends React.Component{
+    //[FINISHED]
     //redirect component (this.props.validepage if token is valide)
     //and redirect to component (this.props.invalidepage if token is invalide or not existant)
     //you can use to either redirect on valide or invalide depend on how the props where filled

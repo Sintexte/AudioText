@@ -6,7 +6,10 @@ import Cookies from 'universal-cookie'
 import {Language} from '../../language/Lang'
 
 class SignupForm extends React.Component{
-    
+    //[ALMOST FINISHED]
+    //SignUp Form
+    //this area is used to signin and send verification to your mail
+
     state = {
         username:"",
         password:"",
@@ -22,33 +25,38 @@ class SignupForm extends React.Component{
     //handling form
     handleSub = (event) =>{
         event.preventDefault();
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ "username": this.state.username, "password":this.state.password })
-        };
-        //sending username / password to auth
-        fetch('/api/login', requestOptions)
-        .then(data=>{
-            if(data.status === 200){this.setState({status:0,logboxmessage:"Account Found, Welcome ! (Redirecting ...)",logboxcolor:"green"})}
-            else if(data.status ===403){this.setState({status:1,logboxmessage:"Bad Password or Username",logboxcolor:"red"})}
-            else if(data.status >=500){this.setState({status:2,logboxmessage:"Server Error",logboxcolor:"red"})}
-            data.json().then(response=>{
-                //setting 'token' cookie (using _id from mongodb user collection as a token should be changed later for a real token generation)
-                const cookies = new Cookies();
-                cookies.set('token', response.token, { path: '/' });
-                this.setState({redirect:true})
+        if(this.state.password === this.state.password_){
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ "username": this.state.username, "password":this.state.password,"email":this.state.email })
+            };
+            //sending username / password to auth
+            fetch('/api/signup', requestOptions)
+            .then(data=>{
+                if(data.status === 200){
+                    this.setState({status:0,logboxmessage:"Sending Verification to email",logboxcolor:"green"})
+                    data.text().then(response=>{
+                        //set state token in the parent compoenent
+                        console.log("res: "+response);
+                        this.props.set_token(response)
+                        this.props.good_signup()
+                    })
+                }
+                else if(data.status ===403){this.setState({status:1,logboxmessage:"Bad Verifcation",logboxcolor:"red"})}
+                else if(data.status >=500){this.setState({status:2,logboxmessage:"Server Error",logboxcolor:"red"})}
+                
             })
-        })
+        }else{
+            this.setState({status:1,logboxcolor:"red",logboxmessage:"Not Same Password"})
+        }
+        
     }
 
     render(){
-        if( this.state.redirect ){
-            return <Redirect to="/Main" />  //redirecting to /Main if Login is good
-        }
         return(
             <>
-                    <NavLink className="strip-link" to="/home">
+                    <NavLink className="strip-link" to="/login">
                         <span>
                             <MdKeyboardBackspace />
                         </span>
@@ -60,14 +68,13 @@ class SignupForm extends React.Component{
                     <hr className="hr_log hr_sign"/>
                     <form onSubmit={this.handleSub}>
                         <input name="username"  onChange={(event)=>{this.setState({username:event.target.value})}} className="input_login form-control input_signup" type="text"  placeholder={this.state.lg.userindefault} required />
-                        <input name="email"  onChange={(event)=>{this.setState({email:event.target.value})}} className="input_login form-control input_signup" type="email"  placeholder={this.state.lg.userindefault} required />
+                        <input name="email"  onChange={(event)=>{this.setState({email:event.target.value})}} className="input_login form-control input_signup" type="email"  placeholder={this.state.lg.mailindefaul} required />
                         <input name="password" onChange={(event)=>{this.setState({password:event.target.value})}} className="input_login form-control input_signup" type="password"  placeholder={this.state.lg.passwordindefault} required/>
                         <input name="password" onChange={(event)=>{this.setState({password_:event.target.value})}} className="input_login form-control input_signup" type="password"  placeholder={this.state.lg.passwordin_default} required/>
                         <div id="log-box" style={{color: this.state.logboxcolor,textAlign:'center'}}>
                             {this.state.logboxmessage}
                         </div><br />
                         <div className="center">
-
                             <input type="submit" className="btn cntform" value={this.state.lg.signbtn}/>
                         </div>
                     </form>

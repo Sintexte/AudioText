@@ -4,6 +4,7 @@ import React from 'react'
 import UploadFile from './UploadFile'
 import Transcript from './Transcript'
 import Record from './Record'
+import UserSpace from '../UserSpace'
 
 
 class AudiotextSaudio extends React.Component{
@@ -56,8 +57,13 @@ class AudiotextSaudio extends React.Component{
                             <Record set_audiotxt = {this.set_audiotxt} />
                         </>
                     )
-                }
-                else{
+                }else if(this.props.page===3){
+                    return(
+                        <>
+                            <UserSpace />
+                        </>
+                    )
+                }else{
                     return (<></>)
                 }
            }

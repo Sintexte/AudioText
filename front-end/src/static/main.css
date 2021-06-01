@@ -54,7 +54,7 @@
     width:70%;
     padding-top:20%;
     padding-left: 29%;
-    padding-top: 15%;
+    padding-top: 9%;
 }
 .uploadbody{
     width:70%;
@@ -73,4 +73,51 @@
     border:unset;
     color:white;
     border-radius: 0px 10px 10px 0px ;
+}
+.usermenu{
+    float: left;
+    width: 20%;
+}
+.usermenu_{
+    background-color: #3755be;
+    height: 90vh;
+}
+.usermenu_selection{
+    transition-duration: 300ms;
+    cursor: pointer;
+    height: 50px;
+    padding: 10px;
+    width: 100%;    
+    text-align: center;
+    background-color: #2d49af;
+}
+.usermenu_devision{
+    background-color: rgba(255, 255, 255, 0.274);
+    width: 20%;
+    margin: 1px 10px 0px 40%;
+    height: 1px;
+}
+.card_color {
+    background-color: #3755be;
+    
+}
+.cardlink_color{
+    color: white;
+    text-decoration: none;
+}
+.cardlink_color:active{
+    color: white;
+    text-decoration: none;
+}
+.cardlink_color:focus{
+    color: white;
+    text-decoration: none;
+}
+.cardlink_color:hover{
+    color: white;
+    text-decoration: none;
+}
+.AudioList{
+    width: inherit;
+    margin-top: 10px;
 }

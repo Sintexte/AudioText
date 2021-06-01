@@ -58,6 +58,13 @@ class Record extends React.Component{
             timesec = 0
             timemin = 0
             const blobURL = URL.createObjectURL(blob)
+            let a = document.createElement('a')
+            let e    = document.createEvent('MouseEvents')
+            a.download = "audio.mp3"
+            a.href = blobURL
+            a.dataset.downloadurl =  ["audio/mp3", a.download, a.href].join(':')
+            e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+            a.dispatchEvent(e)
             this.setState({time_:'0:0', blobURL:blobURL, isRecording: false });
           }).catch((e) => console.log(e));
     };
