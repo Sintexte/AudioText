@@ -34,8 +34,8 @@ const transporter = nodemailer.createTransport({
   secure: false,
   requireTLS: true,
   auth: {
-      user: 'sintexteto',
-      pass: 'Password123?!' //probably change pass, you can put your own gmail
+      user: '',
+      pass: '' //probably change pass, you can put your own gmail
   }
 });
 
