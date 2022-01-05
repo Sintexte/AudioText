@@ -21,7 +21,7 @@ const { exit, nextTick } = require('process');
 const { response } = require('express');
 const speechToText = new SpeechToTextV1({
     authenticator: new IamAuthenticator({
-      apikey: "KgEBjyakPycAhGOkFuKJXudV3wrAFdPFVFHKCWoPtDyS",
+      apikey: "",
     }),
     serviceUrl: "https://api.eu-gb.speech-to-text.watson.cloud.ibm.com/instances/c61d30d0-848b-4d6c-8b7c-d5a8c58ecb0d",
   });
